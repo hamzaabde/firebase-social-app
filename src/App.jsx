@@ -4,21 +4,28 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 // views
-// import Home from './views/home'
-import Login from './views/login'
-import Signup from './views/signup'
+import Profile from '@views/profile'
+import Home from '@views/home'
+import Login from '@views/login'
+import Signup from '@views/signup'
 
 export default () => {
-    return (
-        <div>
-            <Switch>
-                <Route path="/login">
-                    <Login />
-                </Route>
-                <Route path="/signup">
-                    <Signup />
-                </Route>
-            </Switch>
-        </div>
-    )
+	return (
+		<div>
+			<Switch>
+				<Route path="/login">
+					<Login />
+				</Route>
+				<Route path="/signup">
+					<Signup />
+				</Route>
+				<Route exact path="/">
+					<Home />
+				</Route>
+				<Route exact path="/profile:uid">
+					<Profile />
+				</Route>
+			</Switch>
+		</div>
+	)
 }

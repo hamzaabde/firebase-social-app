@@ -5,27 +5,19 @@ import userCurrentUser from '@hooks/useCurrentUser'
 import useScreenHeight from '@hooks/useScreenHeight'
 
 // router
-import { Redirect } from 'react-router-dom'
 
 // components
 import Navbar from '@components/Navbar'
-import Feed from './Feed'
-import Loader from '@components/Loader'
 
 export default () => {
 	const user = userCurrentUser()
 
 	const height = useScreenHeight()
 
-	if (user === null) return <Redirect to="/login" />
-
-	if (user === undefined) return <Loader height={height} />
-
 	return (
 		<div className="container-fluid" style={{ height }}>
 			<div className="d-flex flex-column h-100 mh-100">
 				<Navbar user={user} />
-				<Feed />
 			</div>
 		</div>
 	)

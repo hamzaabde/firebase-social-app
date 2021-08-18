@@ -44,6 +44,6 @@ export const signup = (email, password, username, image) => {
 	})
 }
 
-export const signout = () => {
+export const logout = () => {
 	auth().signOut()
 }

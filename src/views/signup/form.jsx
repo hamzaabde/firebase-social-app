@@ -10,7 +10,7 @@ import useCurrentUser from '@hooks/useCurrentUser'
 import { signup } from '@firebase/auth'
 
 // router
-import { Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 // icons
 import { BsPlusCircleFill } from 'react-icons/bs'
@@ -157,6 +157,7 @@ export default () => {
 								id="email"
 								className="form-control"
 								autoComplete="email"
+								disabled={user === undefined}
 								value={email}
 								onChange={e => {
 									setEmail(e.target.value)

@@ -1,9 +1,12 @@
 import React from 'react'
 
-export const RoundedImg = ({ src }) => {
+export const RoundedImg = ({ src, size = '2.5rem' }) => {
 	return (
-		<div style={{ width: '2.5rem', height: '2.5rem' }}>
-			<img src={src} className="img-thumbnail rounded-circle" />
+		<div
+			className="rounded-circle bg-secondary"
+			style={{ width: size, height: size }}
+		>
+			<img src={src} className="img-thumbnail w-100 h-100 rounded-circle" />
 		</div>
 	)
 }
