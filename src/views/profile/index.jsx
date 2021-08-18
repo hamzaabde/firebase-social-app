@@ -8,10 +8,11 @@ import useScreenHeight from '@hooks/useScreenHeight'
 
 // components
 import Navbar from '@components/Navbar'
+import Bottombar from '@components/Bottombar'
+import Sidebar from '@components/Sidebar'
 
 export default () => {
 	const user = userCurrentUser()
-
 	const height = useScreenHeight()
 
 	return (

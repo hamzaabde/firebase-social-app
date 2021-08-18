@@ -28,11 +28,7 @@ const clearToggle = (toggler, checkEl, toggleState) => {
 
 			const eventPath = e.path
 
-			console.log(eventPath)
-
 			if (eventPath.includes(checkEl.current)) {
-				console.log('on button')
-				console.log(checkEl)
 				toggler(!toggleState)
 			} else {
 				console.log('outside button')
@@ -143,6 +139,7 @@ const Laptop = ({ user, md }) => {
 
 	clearToggle(toggleMenu, largeScreenMenuToggle, menu)
 
+	console.log(user)
 	return (
 		<>
 			{/* logo */}
@@ -205,7 +202,7 @@ const Laptop = ({ user, md }) => {
 
 				{/* buttons */}
 				<div className="btn-group">
-					<Link to={`/profile/${user.uid}`}>
+					<Link to={`/profile/${user && user.uid}`}>
 						<button className="btn text-truncate d-flex align-items-center flex-nowrap">
 							{user ? (
 								<RoundedImg src={user.profileImage} size="2rem" />

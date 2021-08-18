@@ -16,7 +16,13 @@ export default ({ post }) => {
 				</div>
 			</div>
 			<div className="card-body overflow-hidden" style={{ maxHeight: 400 }}>
-				<p className="h-100 text-wrap text-truncate">
+				<p
+					className="h-100 text-truncate"
+					style={{
+						height: 150,
+						maxHeight: 200,
+					}}
+				>
 					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
 					blanditiis magnam ratione ipsa ut qui vitae optio, aliquam maiores
 					nostrum reprehenderit facere porro dolor distinctio nisi in pariatur

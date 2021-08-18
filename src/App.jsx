@@ -22,7 +22,7 @@ export default () => {
 				<Route exact path="/">
 					<Home />
 				</Route>
-				<Route exact path="/profile:uid">
+				<Route path="/profile/:uid">
 					<Profile />
 				</Route>
 			</Switch>

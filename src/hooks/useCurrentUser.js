@@ -4,6 +4,7 @@ import { db, auth } from '@firebase/config'
 
 export default () => {
 	const [user, setUser] = useState()
+	const [error, setError] = useState(null)
 
 	useEffect(() => {
 		const unsubscribe = auth().onAuthStateChanged(user => {
@@ -19,14 +20,10 @@ export default () => {
 								...user,
 								...userData,
 							})
-						} else {
-							const userData = {
-								username: 'anonymous user',
-							}
 						}
 					})
 					.catch(error => {
-						console.log('Error getting document:', error)
+						console.log(error)
 					})
 			} else {
 				setUser(null)
