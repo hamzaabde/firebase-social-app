@@ -14,7 +14,7 @@ import DelayRedirect from '@components/DelayRedirect'
 
 export default () => {
 	// loged in user
-	const user = useCurrentUser()
+	const { user, error } = useCurrentUser()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')

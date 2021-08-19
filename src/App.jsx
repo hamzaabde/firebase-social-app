@@ -4,6 +4,9 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 // views
+import Search from '@views/search'
+import Friends from '@views/friends'
+import PublishPost from '@views/create-post'
 import Profile from '@views/profile'
 import Home from '@views/home'
 import Login from '@views/login'
@@ -24,6 +27,15 @@ export default () => {
 				</Route>
 				<Route path="/profile/:uid">
 					<Profile />
+				</Route>
+				<Route path="/create-post">
+					<PublishPost />
+				</Route>
+				<Route path="/friends">
+					<Friends />
+				</Route>
+				<Route path="/search">
+					<Search />
 				</Route>
 			</Switch>
 		</div>

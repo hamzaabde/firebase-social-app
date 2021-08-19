@@ -10,10 +10,11 @@ import { Redirect } from 'react-router-dom'
 // components
 import Navbar from '@components/Navbar'
 import Loader from '@components/Loader'
-import User from './User'
+import Friends from './Friends'
 
 export default () => {
 	const { user, error } = userCurrentUser()
+
 	const height = useScreenHeight()
 
 	if (user === null) return <Redirect to="/login" />
@@ -24,7 +25,7 @@ export default () => {
 		<div className="container-fluid" style={{ height }}>
 			<div className="d-flex flex-column h-100 mh-100">
 				<Navbar user={user} />
-				<User />
+				<Friends />
 			</div>
 		</div>
 	)

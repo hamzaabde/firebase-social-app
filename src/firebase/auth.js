@@ -12,6 +12,7 @@ export const signup = (email, password, username, image) => {
 				// upload profile
 				const profileRef = bucket()
 					.ref()
+					.child('users')
 					.child(user.uid)
 					.child('profile-picture')
 					.child(image.name)

@@ -9,6 +9,7 @@ export default () => {
 	useEffect(() => {
 		const unsubscribe = auth().onAuthStateChanged(user => {
 			if (user) {
+				setError(null)
 				db()
 					.collection('users')
 					.doc(user.uid)
@@ -23,7 +24,7 @@ export default () => {
 						}
 					})
 					.catch(error => {
-						console.log(error)
+						setError(error.message)
 					})
 			} else {
 				setUser(null)
@@ -33,5 +34,5 @@ export default () => {
 		return unsubscribe
 	}, [])
 
-	return user
+	return { user, error }
 }

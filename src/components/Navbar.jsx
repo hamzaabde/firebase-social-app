@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // icons
 import {
@@ -16,7 +16,7 @@ import { logout } from '@firebase/auth'
 import useMediaQuery from '@hooks/useMediaQuery'
 
 // router
-import { Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 // components
 import { RoundedImg } from '@components/containers'
@@ -36,28 +36,34 @@ const clearToggle = (toggler, checkEl, toggleState) => {
 			}
 		}
 
-		document.addEventListener('click', handler)
+		document.addEventListener('click', handler, false)
 
 		return () => document.removeEventListener('click', handler)
 	}, [toggleState])
 }
 
-const MobileAndTablet = ({ user, sm, md }) => {
+const MobileAndTablet = ({ user, md, sm, setRedirectLink }) => {
 	const [menu, toggleMenu] = useState(false)
-	const smallScreenMenuToggle = useRef()
+	const [search, setSearch] = useState('')
 
-	clearToggle(toggleMenu, smallScreenMenuToggle, menu)
+	// const smallScreenMenuToggle = useRef()
+
+	// clearToggle(toggleMenu, smallScreenMenuToggle, menu)
 
 	return (
 		<>
 			{/* logo */}
 			<div className={`${md ? 'col-auto' : 'col-12'}`}>
-				<h1 className="my-2 fs-4 fw-bolder text-center text-white">BubbleMesh</h1>
+				<h1 className="my-2 fs-4 fw-bolder text-center text-white">
+					{/* <Link to="/" style={{ textDecoration: 'none' }}> */}
+					BubbleMesh
+					{/* </Link> */}
+				</h1>
 			</div>
 
 			{/* search and tabs */}
 			<div className="col flex-shrink-1">
-				<form className="form">
+				<form className="form" action="/search">
 					<div className="input-group">
 						<label
 							htmlFor="search"
@@ -75,6 +81,8 @@ const MobileAndTablet = ({ user, sm, md }) => {
 							autoComplete="search"
 							name="search"
 							placeholder={sm ? 'search bubblemesh' : 'search'}
+							value={search}
+							onChange={e => setSearch(e.target.value)}
 						/>
 					</div>
 				</form>
@@ -124,7 +132,11 @@ const MobileAndTablet = ({ user, sm, md }) => {
 							)}
 						</button>
 					</Link>
-					<button className="btn" ref={smallScreenMenuToggle}>
+					<button
+						className="btn"
+						// ref={smallScreenMenuToggle}
+						onClick={e => toggleMenu(!menu)}
+					>
 						<BsThreeDotsVertical size="1.8rem" color="white" />
 					</button>
 				</div>
@@ -133,23 +145,28 @@ const MobileAndTablet = ({ user, sm, md }) => {
 	)
 }
 
-const Laptop = ({ user, md }) => {
+const Laptop = ({ user, md, setRedirectLink }) => {
 	const [menu, toggleMenu] = useState(false)
-	const largeScreenMenuToggle = useRef()
+	const [search, setSearch] = useState('')
 
-	clearToggle(toggleMenu, largeScreenMenuToggle, menu)
+	// const largeScreenMenuToggle = useRef()
 
-	console.log(user)
+	// clearToggle(toggleMenu, largeScreenMenuToggle, menu)
+
 	return (
 		<>
 			{/* logo */}
 			<div className={`${md ? 'col-auto' : 'col-12'}`}>
-				<h1 className="my-3 fs-5 fw-bolder text-center text-white">BubbleMesh</h1>
+				<Link to="/" style={{ textDecoration: 'none' }}>
+					<h1 className="my-3 fs-5 fw-bolder text-center text-white">
+						BubbleMesh
+					</h1>
+				</Link>
 			</div>
 
 			{/* search and tabs */}
 			<div className="col flex-shrink-1">
-				<form className="form">
+				<form className="form" action="/search">
 					<div className="input-group">
 						<label
 							htmlFor="search"
@@ -167,6 +184,8 @@ const Laptop = ({ user, md }) => {
 							autoComplete="search"
 							name="search"
 							placeholder="search bubblemesh"
+							value={search}
+							onChange={e => setSearch(e.target.value)}
 						/>
 					</div>
 				</form>
@@ -216,7 +235,11 @@ const Laptop = ({ user, md }) => {
 							)}
 						</button>
 					</Link>
-					<button className="btn" ref={largeScreenMenuToggle}>
+					<button
+						className="btn"
+						// ref={largeScreenMenuToggle}
+						onClick={e => toggleMenu(!menu)}
+					>
 						<BsThreeDotsVertical size="1.8rem" color="white" />
 					</button>
 				</div>

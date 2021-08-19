@@ -13,7 +13,7 @@ import Feed from './Feed'
 import Loader from '@components/Loader'
 
 export default () => {
-	const user = userCurrentUser()
+	const { user, error } = userCurrentUser()
 
 	const height = useScreenHeight()
 

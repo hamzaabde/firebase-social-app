@@ -20,7 +20,7 @@ import { RoundedImg } from '@components/containers'
 import DelayRedirect from '@components/DelayRedirect'
 
 export default () => {
-	const user = useCurrentUser()
+	const { user, error } = useCurrentUser()
 
 	const [image, setImage] = useState(null)
 	const [username, setUsername] = useState('')
@@ -117,11 +117,15 @@ export default () => {
 									const img = e.target.files[0]
 									const types = ['image/png', 'image/jpg', 'image/jpeg']
 
-									if (types.includes(img.type)) {
-										setAlert(null)
-										setImage(img)
+									if (img) {
+										if (types.includes(img.type)) {
+											setAlert(null)
+											setImage(img)
+										} else {
+											setAlert('please select an image')
+											setImage(null)
+										}
 									} else {
-										setAlert('please select an image')
 										setImage(null)
 									}
 								}}

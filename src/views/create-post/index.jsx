@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom'
 // components
 import Navbar from '@components/Navbar'
 import Loader from '@components/Loader'
-import User from './User'
+import CreatePost from './CreatePost'
 
 export default () => {
 	const { user, error } = userCurrentUser()
@@ -24,7 +24,7 @@ export default () => {
 		<div className="container-fluid" style={{ height }}>
 			<div className="d-flex flex-column h-100 mh-100">
 				<Navbar user={user} />
-				<User />
+				<CreatePost />
 			</div>
 		</div>
 	)

@@ -16,8 +16,8 @@ export default () => {
 		<div className="row align-items-center justify-content-center bg-white py-1 border-top border-2 border-light">
 			<div className="col d-flex justify-content-center">
 				<Link to="/" style={style}>
-					<button className="btn d-flex flex-column align-items-center">
-						<BsHouseDoorFill className="text-danger" size="1.2rem" />
+					<button className="btn px-0 d-flex flex-column align-items-center">
+						<BsHouseDoorFill className="text-danger" size="2rem" />
 						<span className="fw-bold text-danger" style={style}>
 							Feed
 						</span>
@@ -26,8 +26,8 @@ export default () => {
 			</div>
 			<div className="col-auto d-flex justify-content-center">
 				<Link to="/create-post" style={style}>
-					<button className="btn d-flex flex-column align-items-center">
-						<BsPlusCircleFill className="text-danger" size="1.2rem" />
+					<button className="btn px-0 d-flex flex-column align-items-center">
+						<BsPlusCircleFill className="text-danger" size="2rem" />
 						<span className="fw-bold text-danger" style={style}>
 							Create post
 						</span>
@@ -36,8 +36,8 @@ export default () => {
 			</div>
 			<div className="col d-flex justify-content-center">
 				<Link to="/friends" style={style}>
-					<button className="btn d-flex flex-column align-items-center">
-						<BsPeopleFill className="text-danger" size="1.2rem" />
+					<button className="btn px-0 d-flex flex-column align-items-center">
+						<BsPeopleFill className="text-danger" size="2rem" />
 						<span className="fw-bold text-danger" style={style}>
 							Friends
 						</span>

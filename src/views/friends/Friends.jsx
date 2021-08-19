@@ -1,66 +1,36 @@
-import React, { useState } from 'react'
-
-// icons
-import { BsPeopleCircle } from 'react-icons/bs'
+import React from 'react'
 
 // hooks
 import useMediaQuery from '@hooks/useMediaQuery'
-import useFetchUser from '@hooks/useFetchUser'
+import useUserFriends from '@hooks/useUserFriends'
 
 // components
 import Bottombar from '@components/Bottombar'
 import Sidebar from '@components/Sidebar'
+import { Scrollbars } from 'react-custom-scrollbars-2'
 import { RoundedImg } from '@components/containers'
 
-const activateTab = (a, aa) => (a === aa ? 'active' : null)
+const Friends = () => {
+	const { friends, error } = useUserFriends()
 
-const toggle = (a, aa) => e => a(aa)
-
-const User = ({ user }) => {
 	return (
 		<div>
-			<div className="row align-items-center py-2">
-				<div className="col-auto">
-					{user ? (
-						<RoundedImg src={user.profileImage} size="6rem" />
-					) : (
-						<BsPeopleCircle size="6rem" />
-					)}
-				</div>
-				<div className="col">
-					<h1 className="fs-4 mb-0">{user && user.username}</h1>
-				</div>
-			</div>
-			{/* nav menu */}
-			<div className="tabs">
-				{/* tab nav */}
-				{/* <div className="nav nav-pills">
-					<button
-						className={`nav-item nav-link ${activateTab(
-							activeTab,
-							'friends'
-						)}`}
-						onClick={toggle(setActiveTab, 'friends')}
-					>
-						Friends
-					</button>
-					<button
-						className={`nav-item nav-link ${activateTab(activeTab, 'posts')}`}
-						onClick={toggle(setActiveTab, 'posts')}
-					>
-						Posts
-					</button>
-				</div> */}
-
-				{/* tab pane */}
+			<div className="d-flex flex-column">
+				{friends &&
+					friends.map(friend => (
+						<div className="d-flex align-items-center">
+							<RoundedImg src={friend.profileImage} size="3rem" />
+							<div className="flex-grow-1 mx-2 text-center">
+								{friend.username}
+							</div>
+						</div>
+					))}
 			</div>
 		</div>
 	)
 }
 
 export default () => {
-	const { user, error } = useFetchUser()
-
 	// screens
 	const smallScreens = useMediaQuery('(min-width: 280px)')
 	const largeScreens = useMediaQuery('(min-width: 800px)')
@@ -79,14 +49,42 @@ export default () => {
 							</div>
 							<div className="col-8 h-100">
 								<div className="flex-grow-1 h-100">
-									<User user={user} />
+									<Scrollbars
+										renderThumbVertical={props => (
+											<div
+												{...props}
+												style={{ backgroundColor: 'transparent' }}
+											/>
+										)}
+										autoHeight
+										autoHeightMin="100%"
+										style={{
+											height: '100%',
+										}}
+									>
+										<Friends />
+									</Scrollbars>
 								</div>
 							</div>
 						</div>
 					) : smallScreens ? (
 						<>
 							<div className="flex-grow-1 bg-white overflow-hidden p-0">
-								<User user={user} />
+								<Scrollbars
+									renderThumbVertical={props => (
+										<div
+											{...props}
+											style={{ backgroundColor: 'transparent' }}
+										/>
+									)}
+									autoHeight
+									autoHeightMin="100%"
+									style={{
+										height: '100%',
+									}}
+								>
+									<Friends />
+								</Scrollbars>
 							</div>
 							<Bottombar />
 						</>
