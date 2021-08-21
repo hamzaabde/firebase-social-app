@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 // firebase
-import { db } from '@firebase/config'
+import { db } from '@fb/config'
 
 // router
 import { useRouteMatch } from 'react-router-dom'

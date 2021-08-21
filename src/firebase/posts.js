@@ -1,5 +1,5 @@
-import { db } from '@firebase/config'
-import { bucket } from '@firebase/config'
+import { db } from '@fb/config'
+import { bucket } from '@fb/config'
 
 export const uploadPost = (postBody, postImage, author) => {
 	// doc ref

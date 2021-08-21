@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 
 // firebase
-import { getAllFriends } from '@firebase/friends'
-
-// hooks
-import useCurrentUser from '@hooks/useCurrentUser'
+import { getAllFriends } from '@fb/friends'
 
 export default () => {
 	const [friends, setFriends] = useState()

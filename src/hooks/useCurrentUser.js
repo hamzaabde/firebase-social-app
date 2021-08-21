@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { db, auth } from '@firebase/config'
+import { db, auth } from '@fb/config'
 
 export default () => {
 	const [user, setUser] = useState()

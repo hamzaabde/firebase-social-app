@@ -10,7 +10,7 @@ import {
 } from 'react-icons/bs'
 
 // firebase
-import { logout } from '@firebase/auth'
+import { logout } from '@fb/auth'
 
 // hooks
 import useMediaQuery from '@hooks/useMediaQuery'

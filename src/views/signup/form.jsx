@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // helpers
 import { getSrcFromFile } from '@helpers/src'
@@ -7,7 +7,7 @@ import { getSrcFromFile } from '@helpers/src'
 import useCurrentUser from '@hooks/useCurrentUser'
 
 // firebase
-import { signup } from '@firebase/auth'
+import { signup } from '@fb/auth'
 
 // router
 import { Redirect, Link } from 'react-router-dom'

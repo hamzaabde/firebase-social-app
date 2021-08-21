@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 // firebase
-import { getAllPosts } from '@firebase/posts'
+import { getAllPosts } from '@fb/posts'
 
 export default () => {
 	const [posts, setPosts] = useState()

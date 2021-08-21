@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { BsImage } from 'react-icons/bs'
 
 // firebase
-import { uploadPost } from '@firebase/posts'
+import { uploadPost } from '@fb/posts'
 
 // helpers
 import { getSrcFromFile } from '@helpers/src'

@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 
 // firebase
-import { getAllUsers } from '@firebase/users'
-
-// hooks
-import useCurrentUser from '@hooks/useCurrentUser'
+import { getAllUsers } from '@fb/users'
 
 // helpers
 import matchSearch from '@helpers/matchSearch'

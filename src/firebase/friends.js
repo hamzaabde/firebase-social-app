@@ -1,5 +1,5 @@
-import { db } from '@firebase/config'
-import { getCurrentUser } from '@firebase/auth'
+import { db } from '@fb/config'
+import { getCurrentUser } from '@fb/auth'
 
 export const addToFriends = friend => {
 	const currentUserID = getCurrentUser().uid

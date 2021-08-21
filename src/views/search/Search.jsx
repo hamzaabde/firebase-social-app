@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 // firebase
-import { addToFriends } from '@firebase/friends'
+import { addToFriends } from '@fb/friends'
 
 // icons
 import { BsPlus } from 'react-icons/bs'

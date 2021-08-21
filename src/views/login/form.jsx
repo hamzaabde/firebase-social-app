@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 // firebase
-import { login } from '@firebase/auth'
+import { login } from '@fb/auth'
 
 // hooks
 import useCurrentUser from '@hooks/useCurrentUser'

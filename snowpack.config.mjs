@@ -1,5 +1,6 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 export default {
+	knownEntrypoints: ['firebase/app'],
 	mount: {
 		public: { url: '/', static: true },
 		src: '/dist',
@@ -11,12 +12,12 @@ export default {
 	],
 	optimize: {
 		/* Example: Bundle your final build: */
-		bundle: true,
+		// bundle: true,
 	},
 	alias: {
 		'@components': './src/components',
 		'@views': './src/views',
-		'@firebase': './src/firebase',
+		'@fb': './src/firebase',
 		'@hooks': './src/hooks',
 		'@utils': './src/utils',
 		'@helpers': './src/utils/helpers',
