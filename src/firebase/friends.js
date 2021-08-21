@@ -1,40 +1,60 @@
 import { db } from '@firebase/config'
+import { getCurrentUser } from '@firebase/auth'
 
-export const addToFriends = (user, friend) => {
-	const userFriends = db()
-		.collection('users')
-		.doc(user.uid)
-		.collection('friends')
-		.doc(friend.uid)
-	return new Promise((resolve, reject) => {
-		if (user.uid !== friend.uid)
+export const addToFriends = friend => {
+	const currentUserID = getCurrentUser().uid
+
+	if (currentUserID) {
+		const userFriends = db()
+			.collection('users')
+			.doc(currentUserID)
+			.collection('friends')
+			.doc(friend.uid)
+
+		return new Promise((resolve, reject) => {
 			userFriends
-				.set({
-					username: friend.username,
-					profileImage: friend.profileImage,
-				})
+				.set(
+					{
+						username: friend.username,
+						profileImage: friend.profileImage,
+					},
+					{ merge: true }
+				)
 				.then(resolve)
 				.catch(reject)
-		else reject(new Error('same user'))
-	})
+		})
+	}
+
+	return new Error('please sign in first')
 }
 
-export const getAllFriends = user => {
-	const userFriends = db().collection('users').doc(user.uid).collection('friends')
+export const getAllFriends = () => {
+	const currentUserID = getCurrentUser().uid
 
-	return new Promise((resolve, reject) => {
-		userFriends
-			.get()
-			.then(docs => {
-				const friends = []
-				docs.forEach(doc => {
-					friends.push({
-						...doc.data(),
-						uid: doc.id,
+	if (currentUserID) {
+		// current user friends ref
+		const userFriends = db()
+			.collection('users')
+			.doc(currentUserID)
+			.collection('friends')
+
+		// get currents users friends collection
+		return new Promise((resolve, reject) => {
+			userFriends
+				.get()
+				.then(docs => {
+					const friends = []
+					docs.forEach(doc => {
+						friends.push({
+							...doc.data(),
+							uid: doc.id,
+						})
 					})
+					resolve(friends)
 				})
-				resolve(friends)
-			})
-			.catch(reject)
-	})
+				.catch(reject)
+		})
+	} else {
+		return Promise.reject('please signin')
+	}
 }

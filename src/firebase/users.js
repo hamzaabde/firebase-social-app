@@ -1,4 +1,5 @@
 import { db } from '@firebase/config'
+import { getCurrentUser } from '@firebase/auth'
 
 export const getAllUsers = () => {
 	return new Promise((resolve, reject) => {
@@ -9,10 +10,13 @@ export const getAllUsers = () => {
 				const users = []
 
 				docs.forEach(doc => {
-					users.push({
-						...doc.data(),
-						uid: doc.id,
-					})
+					const currentUID = getCurrentUser().uid
+
+					if (doc.id !== currentUID)
+						users.push({
+							...doc.data(),
+							uid: doc.id,
+						})
 				})
 
 				// console.log(users)

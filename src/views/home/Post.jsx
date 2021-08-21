@@ -15,7 +15,10 @@ export default ({ post }) => {
 					<h3 className="ms-2 fs-5 fw-bold mb-0">{post.authorName}</h3>
 				</div>
 			</div>
-			<div className="card-body overflow-hidden" style={{ maxHeight: 400 }}>
+			<div
+				className="card-body overflow-hidden"
+				style={{ minHeight: '6rem', maxHeight: 600 }}
+			>
 				<p
 					className="overflow-hidden"
 					style={{

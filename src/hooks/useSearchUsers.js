@@ -13,9 +13,6 @@ import matchSearch from '@helpers/matchSearch'
 import { useLocation } from 'react-router-dom'
 
 export default () => {
-	// current user
-	const { user } = useCurrentUser()
-
 	const [users, setUsers] = useState()
 	const [error, setError] = useState(null)
 
@@ -28,11 +25,11 @@ export default () => {
 	useEffect(() => {
 		getAllUsers()
 			.then(users => {
-				const matchedUsers = users
-					.filter(({ username }) => matchSearch(username, searchTerm))
-					.filter(({ uid }) => uid !== user.uid)
+				const matchedUsers = users.filter(({ username }) =>
+					matchSearch(username, searchTerm)
+				)
 
-				console.log(matchedUsers)
+				// console.log(users)
 
 				setUsers(matchedUsers)
 			})

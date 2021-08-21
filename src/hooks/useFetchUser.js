@@ -29,7 +29,7 @@ export default () => {
 			.catch(error => {
 				setError(error.message)
 			})
-	}, [])
+	}, [params])
 
 	return { user, error }
 }

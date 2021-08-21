@@ -4,6 +4,9 @@ import React from 'react'
 import useMediaQuery from '@hooks/useMediaQuery'
 import useUserFriends from '@hooks/useUserFriends'
 
+// router
+import { Link } from 'react-router-dom'
+
 // components
 import Bottombar from '@components/Bottombar'
 import Sidebar from '@components/Sidebar'
@@ -13,17 +16,23 @@ import { RoundedImg } from '@components/containers'
 const Friends = () => {
 	const { friends, error } = useUserFriends()
 
+	console.log(friends)
+
 	return (
 		<div>
-			<div className="d-flex flex-column">
+			<div className="d-flex flex-column my-2">
 				{friends &&
 					friends.map(friend => (
-						<div className="d-flex align-items-center">
-							<RoundedImg src={friend.profileImage} size="3rem" />
-							<div className="flex-grow-1 mx-2 text-center">
-								{friend.username}
+						<Link
+							key={friend.uid}
+							to={`/profile/${friend.uid}`}
+							style={{ textDecoration: 'none' }}
+						>
+							<div className="d-flex align-items-center mb-2 p-1 border border-2 rounded-2">
+								<RoundedImg src={friend.profileImage} size="3rem" />
+								<div className="mx-2 text-center">{friend.username}</div>
 							</div>
-						</div>
+						</Link>
 					))}
 			</div>
 		</div>

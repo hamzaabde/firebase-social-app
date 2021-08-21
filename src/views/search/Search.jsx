@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+// firebase
+import { addToFriends } from '@firebase/friends'
 
 // icons
 import { BsPlus } from 'react-icons/bs'
@@ -16,6 +19,32 @@ import Sidebar from '@components/Sidebar'
 import { Scrollbars } from 'react-custom-scrollbars-2'
 import { RoundedImg } from '@components/containers'
 
+const AddBtn = ({ user }) => {
+	const [loading, setLoading] = useState(false)
+
+	return (
+		<button
+			className="btn btn-primary d-flex align-items-center"
+			onClick={() => {
+				setLoading(true)
+				addToFriends(user)
+					.then(() => {
+						setLoading(false)
+						console.log(`${user.username} added to your friends`)
+					})
+					.catch(() => {
+						setLoading(false)
+						console.log('error occured')
+					})
+			}}
+		>
+			{loading && <div className="spinner-border me-2"></div>}
+			<BsPlus className="text-white" size="2rem" />
+			<span>add freinds</span>
+		</button>
+	)
+}
+
 const User = ({ user }) => (
 	<div className="d-flex align-items-center justify-content-between border border-2 p-1 my-2">
 		<Link
@@ -26,15 +55,7 @@ const User = ({ user }) => (
 			<RoundedImg src={user.profileImage} size="3rem" />
 			<h3 className="flex-grow-1  ms-4 mb-0 text-center">{user.username}</h3>
 		</Link>
-		<button
-			className="btn btn-primary d-flex align-items-center"
-			onClick={() => {
-				console.log(`adding ${user.username} to your friends list`)
-			}}
-		>
-			<BsPlus className="text-white" size="2rem" />
-			<span>add freinds</span>
-		</button>
+		<AddBtn user={user} />
 	</div>
 )
 

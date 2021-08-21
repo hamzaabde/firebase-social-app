@@ -5,8 +5,6 @@ export default (a, b) => {
 	let match = false
 
 	arrA.forEach(wordA => {
-		console.log(wordA)
-
 		const regex = new RegExp(wordA, 'ig')
 
 		arrB.forEach(wordB => {

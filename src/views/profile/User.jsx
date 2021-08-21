@@ -12,9 +12,9 @@ import Bottombar from '@components/Bottombar'
 import Sidebar from '@components/Sidebar'
 import { RoundedImg } from '@components/containers'
 
-const activateTab = (a, aa) => (a === aa ? 'active' : null)
+// const activateTab = (a, aa) => (a === aa ? 'active' : null)
 
-const toggle = (a, aa) => e => a(aa)
+// const toggle = (a, aa) => e => a(aa)
 
 const User = ({ user }) => {
 	return (
@@ -32,9 +32,9 @@ const User = ({ user }) => {
 				</div>
 			</div>
 			{/* nav menu */}
-			<div className="tabs">
-				{/* tab nav */}
-				{/* <div className="nav nav-pills">
+			{/* <div className="tabs"> */}
+			{/* tab nav */}
+			{/* <div className="nav nav-pills">
 					<button
 						className={`nav-item nav-link ${activateTab(
 							activeTab,
@@ -52,8 +52,8 @@ const User = ({ user }) => {
 					</button>
 				</div> */}
 
-				{/* tab pane */}
-			</div>
+			{/* tab pane */}
+			{/* </div> */}
 		</div>
 	)
 }

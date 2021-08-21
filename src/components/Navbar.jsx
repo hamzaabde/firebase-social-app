@@ -21,28 +21,28 @@ import { Redirect, Link } from 'react-router-dom'
 // components
 import { RoundedImg } from '@components/containers'
 
-const clearToggle = (toggler, checkEl, toggleState) => {
-	useEffect(() => {
-		const handler = e => {
-			e.preventDefault()
+// const clearToggle = (toggler, checkEl, toggleState) => {
+// 	useEffect(() => {
+// 		const handler = e => {
+// 			e.preventDefault()
 
-			const eventPath = e.path
+// 			const eventPath = e.path
 
-			if (eventPath.includes(checkEl.current)) {
-				toggler(!toggleState)
-			} else {
-				console.log('outside button')
-				toggler(false)
-			}
-		}
+// 			if (eventPath.includes(checkEl.current)) {
+// 				toggler(!toggleState)
+// 			} else {
+// 				console.log('outside button')
+// 				toggler(false)
+// 			}
+// 		}
 
-		document.addEventListener('click', handler, false)
+// 		document.addEventListener('click', handler, false)
 
-		return () => document.removeEventListener('click', handler)
-	}, [toggleState])
-}
+// 		return () => document.removeEventListener('click', handler)
+// 	}, [toggleState])
+// }
 
-const MobileAndTablet = ({ user, md, sm, setRedirectLink }) => {
+const MobileAndTablet = ({ user, md, sm }) => {
 	const [menu, toggleMenu] = useState(false)
 	const [search, setSearch] = useState('')
 
@@ -99,7 +99,7 @@ const MobileAndTablet = ({ user, md, sm, setRedirectLink }) => {
 						}}
 					>
 						<div className="d-flex align-items-stretch flex-column  rounded-4">
-							<Link to="/edit-profile">
+							<Link to="/edit-profile" style={{ textDecoration: 'none' }}>
 								<button className="btn btn-secondary py-2 px-3">
 									<BsPencilSquare color="white" />
 									<span className="ms-2">edit profile</span>
@@ -118,7 +118,7 @@ const MobileAndTablet = ({ user, md, sm, setRedirectLink }) => {
 
 				{/* buttons */}
 				<div className="btn-group">
-					<Link to={`/profile/${user.uid}`}>
+					<Link to={`/profile/${user.uid}`} style={{ textDecoration: 'none' }}>
 						<button className="btn text-truncate d-flex align-items-center flex-nowrap">
 							{user && sm && (
 								<span className="me-2 text-white fs-6 text-nowrap">
@@ -145,7 +145,7 @@ const MobileAndTablet = ({ user, md, sm, setRedirectLink }) => {
 	)
 }
 
-const Laptop = ({ user, md, setRedirectLink }) => {
+const Laptop = ({ user, md }) => {
 	const [menu, toggleMenu] = useState(false)
 	const [search, setSearch] = useState('')
 
@@ -202,7 +202,7 @@ const Laptop = ({ user, md, setRedirectLink }) => {
 						}}
 					>
 						<div className="d-flex align-items-stretch flex-column  rounded-4">
-							<Link to="/edit-profile">
+							<Link to="/edit-profile" style={{ textDecoration: 'none' }}>
 								<button className="btn btn-secondary py-2 px-3">
 									<BsPencilSquare color="white" />
 									<span className="ms-2">edit profile</span>
@@ -221,7 +221,10 @@ const Laptop = ({ user, md, setRedirectLink }) => {
 
 				{/* buttons */}
 				<div className="btn-group">
-					<Link to={`/profile/${user && user.uid}`}>
+					<Link
+						to={`/profile/${user && user.uid}`}
+						style={{ textDecoration: 'none' }}
+					>
 						<button className="btn text-truncate d-flex align-items-center flex-nowrap">
 							{user ? (
 								<RoundedImg src={user.profileImage} size="2rem" />
